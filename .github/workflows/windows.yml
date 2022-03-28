@@ -13,6 +13,8 @@ jobs:
   # Job 'runtests', based on https://stackoverflow.com/questions/61558780/python-testing-with-github-actions-on-windows
   runtests:
     runs-on: windows-2019
+    env:
+      DB_HOST: monetdb
     steps:
       # Check out the repository
       #- uses: actions/checkout@v2
@@ -23,7 +25,7 @@ jobs:
         with:
           python-version: '3.6'
 
-      - name: run the tests
+      - name: run the test
         run: |
           python -m venv venv
           venv\Scripts\Activate.ps1
