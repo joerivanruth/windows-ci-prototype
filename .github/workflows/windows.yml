@@ -13,6 +13,11 @@ jobs:
   # Job 'runtests', based on https://stackoverflow.com/questions/61558780/python-testing-with-github-actions-on-windows
   runtests:
     runs-on: windows-2019
+    services:
+      monetdb:
+        image: monetdb/monetdb:latest
+        ports:
+        - 50000:50000
     env:
       DB_HOST: monetdb
     steps:
