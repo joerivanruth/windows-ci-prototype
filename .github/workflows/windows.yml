@@ -29,6 +29,12 @@ jobs:
           venv\Scripts\Activate.ps1
           python -m pip install -r requirements.txt
 
+      - name: run the tests
+        run: |
+          venv\Scripts\Activate.ps1
+          dir venv
+          pytest
+
       # # Runs a single command using the runners shell
       # - name: Install dependencies
       #   run: pip install -no-cache-dir -r requirements.txt
