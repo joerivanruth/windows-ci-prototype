@@ -33,7 +33,6 @@ jobs:
           msiexec /i $Env:RUNNER_TEMP\monetdb.msi /norestart /qn /log $Env:RUNNER_TEMP\install.txt
           dir c:\Program Files\MonetDB\MonetDB5
 
-
       # - name: run the test
       #   run: |
       #     python -m venv venv
