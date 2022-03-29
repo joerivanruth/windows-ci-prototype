@@ -23,9 +23,14 @@ jobs:
         with:
           python-version: '3.6'
 
-      - name: run the test
+      - name: Download MonetDB
         run: |
-          python -m venv venv
-          venv\Scripts\Activate.ps1
-          python -m pip install -r requirements.txt
-          python test.py
+          python download-monetdb.py %RUNNER_TEMP%\monetdb.msi
+          dir %RUNNER_TEMP%
+
+      # - name: run the test
+      #   run: |
+      #     python -m venv venv
+      #     venv\Scripts\Activate.ps1
+      #     python -m pip install -r requirements.txt
+      #     python test.py
