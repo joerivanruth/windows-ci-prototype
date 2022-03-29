@@ -25,8 +25,8 @@ jobs:
 
       - name: Download MonetDB
         run: |
-          python download-monetdb.py %RUNNER_TEMP%\monetdb.msi
-          dir %RUNNER_TEMP%
+          python download-monetdb.py $Env:RUNNER_TEMP\monetdb.msi
+          dir $Env:RUNNER_TEMP
 
       # - name: run the test
       #   run: |
