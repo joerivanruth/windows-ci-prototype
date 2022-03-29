@@ -13,8 +13,6 @@ jobs:
   # Job 'runtests', based on https://stackoverflow.com/questions/61558780/python-testing-with-github-actions-on-windows
   runtests:
     runs-on: windows-2019
-    env:
-      monetdb_msi: ${{runner.temp}}/monetdb.msi
     steps:
       # Check out the repository
       #- uses: actions/checkout@v2
@@ -27,8 +25,14 @@ jobs:
 
       - name: Download MonetDB
         run: |
-          python download-monetdb.py ${{env.monetdb_msi}}
+          python download-monetdb.py $Env:RUNNER_TEMP\monetdb.msi
           dir $Env:RUNNER_TEMP
+
+      - name: Install MonetDB
+        run: |
+          msiexec /i $Env:RUNNER_TEMP\monetdb.msi /quiet /qn /norestart /log $Env:RUNNER_TMP\install.log TARGETDIR=$Env:RUNNER_TEMP\monet
+          dir $Env:RUNNER_TEMP/monet
+
 
       # - name: run the test
       #   run: |
