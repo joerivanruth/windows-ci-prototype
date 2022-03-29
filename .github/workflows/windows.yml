@@ -30,7 +30,7 @@ jobs:
 
       - name: Install MonetDB
         run: |
-          msiexec /i $Env:RUNNER_TEMP\monetdb.msi /quiet /qn /norestart /log $Env:RUNNER_TMP\install.log TARGETDIR=$Env:RUNNER_TEMP\monet
+          msiexec /i $Env:RUNNER_TEMP\monetdb.msi /qn /norestart /log $Env:RUNNER_TMP\install.log TARGETDIR=$Env:RUNNER_TEMP\monet
           type $Env:RUNNER_TMP\install.log
           dir $Env:RUNNER_TEMP/monet
 
