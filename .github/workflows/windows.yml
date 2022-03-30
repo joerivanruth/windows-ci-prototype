@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir $Env:RUNNER_TEMP\Monet
           icacls $Env:RUNNER_TEMP\Monet /T /grant Users:F
-          msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart TARGETDIR=$Env:RUNNER_TEMP\Monet
+          msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart /qn /passive TARGETDIR=$Env:RUNNER_TEMP\Monet
           dir $Env:RUNNER_TEMP
           echo hello
           dir $Env:RUNNER_TEMP\Monet
