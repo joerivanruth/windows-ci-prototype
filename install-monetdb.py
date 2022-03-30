@@ -182,6 +182,10 @@ for line in TREE.strip().splitlines():
 			continue
 		src = os.path.join(staging_dir, parts[-1])
 		src = src.replace('-', '_')
+		if src.startswith('.'):
+			src = '_' + src
+		if '140' in src and '.dll' in src:
+			src += '.DFEFC2FE_EEE6_424C_841B_D4E66F0C84A3'
 		tgt_dir = os.path.join(dest_dir, *parts[:-1])
 		tgt = os.path.join(dest_dir, *parts)
 		if not os.path.isdir(tgt_dir):
