@@ -25,12 +25,11 @@ jobs:
 
       - name: Download MonetDB
         run: |
-          python download-monetdb.py ${{ runner.temp }}\monetdb.msi
+          curl https://www.monetdb.org/downloads/Windows/Jan2022-SP1/MonetDB5-SQL-Installer-x86_64-20220207.msi -o ${{ runner.temp }}\monetdb.msi --no-progress-meter
           dir ${{ runner.temp }}
           7z x ${{ runner.temp }}\monetdb.msi -o${{ runner.temp }}\staging
           dir ${{ runner.temp }}\staging
 
-#          icacls ${{ runner.temp }} /t /grant Users:F /T
       - name: Install MonetDB
         run: |
           python install-monetdb.py ${{ runner.temp }}\staging ${{ runner.temp }}\MONET
