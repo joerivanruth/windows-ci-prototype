@@ -31,11 +31,11 @@ jobs:
 #          icacls ${{ runner.temp }} /t /grant Users:F /T
       - name: Install MonetDB
         run: |
-          echo 7z x ${{ runner.temp }}\monetdb.msi -o${{ runner.temp }}\staging
           7z x ${{ runner.temp }}\monetdb.msi -o${{ runner.temp }}\staging
           dir
-          echo python install-monetdb.py ${{ runner.temp }}\staging ${{ runner.temp }}\MONET
+          echo OKIDOKI
           python install-monetdb.py ${{ runner.temp }}\staging ${{ runner.temp }}\MONET
+          echo BOKIPOKI
           dir ${{ runner.temp }}\MONET
           dir ${{ runner.temp }}\MONET\bin
 

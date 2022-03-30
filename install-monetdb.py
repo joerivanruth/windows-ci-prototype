@@ -175,6 +175,7 @@ System64/vcruntime140_1.dll
 # test.py
 # """
 
+failures = 0
 for line in TREE.strip().splitlines():
 		parts = line.split('/')
 		if not parts[-1]:
@@ -186,4 +187,11 @@ for line in TREE.strip().splitlines():
 			print(f"Creating dir {tgt_dir}")
 			os.makedirs(tgt_dir)
 		print(f"Copying {src} to {tgt}")
-		shutil.copyfile(src, tgt)
+		try:
+			shutil.copyfile(src, tgt)
+		except Exception as e:
+			print(f"  !! FAILED: {e}")
+			failures += 1
+
+if failures:
+	exit(f"Encountered {failures} failures")
