@@ -31,9 +31,11 @@ jobs:
 #          icacls $Env:RUNNER_TEMP /t /grant Users:F /T
       - name: Install MonetDB
         run: |
+          echo 7z x $Env:RUNNER_TEMP\monetdb.msi -o$Env:RUNNER_TEMP\staging
           7z x $Env:RUNNER_TEMP\monetdb.msi -o$Env:RUNNER_TEMP\staging
           dir
-          python install_monetdb.py $Env:RUNNER_TEMP\staging $Env:RUNNER_TEMP\MONET
+          echo python install-monetdb.py $Env:RUNNER_TEMP\staging $Env:RUNNER_TEMP\MONET
+          python install-monetdb.py $Env:RUNNER_TEMP\staging $Env:RUNNER_TEMP\MONET
           dir $Env:RUNNER_TEMP\MONET
           dir $Env:RUNNER_TEMP\MONET\bin
 
