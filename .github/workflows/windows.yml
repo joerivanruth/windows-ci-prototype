@@ -43,4 +43,5 @@ jobs:
           python -m venv venv
           venv\Scripts\Activate.ps1
           python -m pip install -r requirements.txt
-          python test.py
+          mkdir ${{ runner.temp }}\dbfarm
+          python test.py ${{ runner.temp }}\MONET ${{ runner.temp }}\dbfarm demo 54321

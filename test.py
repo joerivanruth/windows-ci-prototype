@@ -2,9 +2,8 @@
 
 import os
 import platform
-import socket
 import subprocess
-import tempfile
+import sys
 import time
 
 import pymonetdb
@@ -66,9 +65,14 @@ def start_mserver(dbname, monetdbdir, farmdir, port):
     return proc
 
 
-db_name = 'demo'
-db_port = 54321
-proc = start_mserver(db_name, '/home/jvr/monets/Jan2022/inst', '/tmp/jvr/bla', db_port)
+if len(sys.argv) != 5:
+    exit(f"Usage: {sys.argv[0]} MONETDIR FARMDIR DBNAME PORT")
+monet_dir = sys.argv[1]
+farm_dir = sys.argv[2]
+db_name = sys.argv[3]
+db_port = int(sys.argv[4])
+
+proc = start_mserver(db_name, monet_dir, farm_dir, db_port)
 try:
     conn = pymonetdb.connect(db_name, host='localhost', port=db_port)
     cursor = conn.cursor()
