@@ -32,6 +32,7 @@ jobs:
       - name: Install MonetDB
         run: |
           mkdir c:\monetemp
+          icacls c:\monetemp /t /grant Users:F /T
           msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart /qn /passive TARGETDIR=c:\monetemp
           echo hello
           dir c:\monetemp
