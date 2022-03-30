@@ -177,6 +177,8 @@ System64/vcruntime140_1.dll
 
 for line in TREE.strip().splitlines():
 		parts = line.split('/')
+		if not parts[-1]:
+			continue
 		src = os.path.join(staging_dir, parts[-1])
 		tgt_dir = os.path.join(dest_dir, *parts[:-1])
 		tgt = os.path.join(dest_dir, *parts)
