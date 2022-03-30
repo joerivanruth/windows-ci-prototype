@@ -36,6 +36,7 @@ jobs:
           python install-monetdb.py ${{ runner.temp }}\staging ${{ runner.temp }}\MONET
           dir ${{ runner.temp }}\MONET
           dir ${{ runner.temp }}\MONET\bin
+          ${{ runner.temp }}\MONET\bin\mserver5.exe --help
 
       # - name: run the test
       #   run: |
