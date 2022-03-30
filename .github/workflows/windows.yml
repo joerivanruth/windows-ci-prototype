@@ -30,10 +30,9 @@ jobs:
 
       - name: Install MonetDB
         run: |
-          msiexec /i $Env:RUNNER_TEMP\monetdb.msi /norestart /qb- /log
-          dir "c:\Program Files"
-          dir "c:\Program Files\MonetDB"
-          dir "c:\Program Files\MonetDB\MonetDB5"
+          msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart /qn TARGETDIR=$Env:RUNNER_TEMP\Monet
+          dir $Env:RUNNER_TEMP
+          dir $Env:RUNNER_TEMP\Monet
 
       # - name: run the test
       #   run: |
