@@ -41,7 +41,7 @@ def start_mserver(dbname, monetdbdir, farmdir, port):
     print()
     print('Starting mserver')
     print(f'PATH={env["PATH"]}')
-    print(f'cmdline: {cmdline!r}0')
+    print(f'cmdline: {cmdline!r}')
     t0 = time.time()
     verbose = t0 + 1
     proc = subprocess.Popen(cmdline, env=env, close_fds=True)
@@ -85,4 +85,3 @@ finally:
         proc.kill()
     else:
         print('Server has already terminated')
-
