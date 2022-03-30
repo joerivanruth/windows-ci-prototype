@@ -180,18 +180,19 @@ for line in TREE.strip().splitlines():
 		parts = line.split('/')
 		if not parts[-1]:
 			continue
-		src = os.path.join(staging_dir, parts[-1])
-		src = src.replace('-', '_')
-		if src.startswith('.'):
-			src = '_' + src
-		if '140' in src and '.dll' in src:
-			src += '.DFEFC2FE_EEE6_424C_841B_D4E66F0C84A3'
+		src0 = parts[-1]
+		src0 = src0.replace('-', '_')
+		if src0.startswith('.'):
+			src0 = '_' + src0
+		if '140' in src0 and '.dll' in src0:
+			src0 += '.DFEFC2FE_EEE6_424C_841B_D4E66F0C84A3'
+		src = os.path.join(staging_dir, src0)
 		tgt_dir = os.path.join(dest_dir, *parts[:-1])
 		tgt = os.path.join(dest_dir, *parts)
 		if not os.path.isdir(tgt_dir):
 			print(f"Creating dir {tgt_dir}", flush=True)
 			os.makedirs(tgt_dir)
-		print(f"Copying {src} to {tgt}", flush=True)
+		print(f"Copying [{src0}] {src} to {tgt}", flush=True)
 		try:
 			shutil.copyfile(src, tgt)
 		except Exception as e:
