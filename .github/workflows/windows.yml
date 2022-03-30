@@ -31,7 +31,8 @@ jobs:
 #          icacls $Env:RUNNER_TEMP /t /grant Users:F /T
       - name: Install MonetDB
         run: |
-          icacls $Env:RUNNER_TEMP /T /grant Users:F
+          mkdir $Env:RUNNER_TEMP\Monet
+          icacls $Env:RUNNER_TEMP\Monet /T /grant Users:F
           msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart TARGETDIR=$Env:RUNNER_TEMP\Monet
           dir $Env:RUNNER_TEMP
           dir $Env:RUNNER_TEMP\Monet
