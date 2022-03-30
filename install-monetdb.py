@@ -176,9 +176,12 @@ System64/vcruntime140_1.dll
 # """
 
 for line in TREE.strip().splitlines():
-	parts = line.split('/')
-	src = os.path.join(staging_dir, parts[-1])
-	tgt_dir = os.path.join(dest_dir, *parts[:-1])
-	tgt = os.path.join(dest_dir, *parts)
-	os.makedirs(tgt_dir, exist_ok=True)
-	shutil.copyfile(src, tgt)
+		parts = line.split('/')
+		src = os.path.join(staging_dir, parts[-1])
+		tgt_dir = os.path.join(dest_dir, *parts[:-1])
+		tgt = os.path.join(dest_dir, *parts)
+		if not os.path.isdir(tgt_dir):
+			print(f"Creating dir {tgt_dir}")
+			os.makedirs(tgt_dir)
+		print(f"Copying {src} to {tgt}")
+		shutil.copyfile(src, tgt)
