@@ -28,8 +28,10 @@ jobs:
           python download-monetdb.py $Env:RUNNER_TEMP\monetdb.msi
           dir $Env:RUNNER_TEMP
 
+#          icacls $Env:RUNNER_TEMP /t /grant Users:F /T
       - name: Install MonetDB
         run: |
+          icacls $Env:RUNNER_TEMP /T /grant Users:F
           msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart TARGETDIR=$Env:RUNNER_TEMP\Monet
           dir $Env:RUNNER_TEMP
           dir $Env:RUNNER_TEMP\Monet
