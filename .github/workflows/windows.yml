@@ -27,15 +27,13 @@ jobs:
         run: |
           python download-monetdb.py ${{ runner.temp }}\monetdb.msi
           dir ${{ runner.temp }}
+          7z x ${{ runner.temp }}\monetdb.msi -o${{ runner.temp }}\staging
+          dir ${{ runner.temp }}\staging
 
 #          icacls ${{ runner.temp }} /t /grant Users:F /T
       - name: Install MonetDB
         run: |
-          7z x ${{ runner.temp }}\monetdb.msi -o${{ runner.temp }}\staging
-          dir
-          echo OKIDOKI
           python install-monetdb.py ${{ runner.temp }}\staging ${{ runner.temp }}\MONET
-          echo BOKIPOKI
           dir ${{ runner.temp }}\MONET
           dir ${{ runner.temp }}\MONET\bin
 

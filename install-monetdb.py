@@ -181,16 +181,17 @@ for line in TREE.strip().splitlines():
 		if not parts[-1]:
 			continue
 		src = os.path.join(staging_dir, parts[-1])
+		src = src.replace('-', '_')
 		tgt_dir = os.path.join(dest_dir, *parts[:-1])
 		tgt = os.path.join(dest_dir, *parts)
 		if not os.path.isdir(tgt_dir):
-			print(f"Creating dir {tgt_dir}")
+			print(f"Creating dir {tgt_dir}", flush=True)
 			os.makedirs(tgt_dir)
-		print(f"Copying {src} to {tgt}")
+		print(f"Copying {src} to {tgt}", flush=True)
 		try:
 			shutil.copyfile(src, tgt)
 		except Exception as e:
-			print(f"  !! FAILED: {e}")
+			print(f"  !! FAILED: {e}", flush=True)
 			failures += 1
 
 if failures:
