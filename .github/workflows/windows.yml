@@ -35,7 +35,9 @@ jobs:
           icacls $Env:RUNNER_TEMP\Monet /T /grant Users:F
           msiexec /a $Env:RUNNER_TEMP\monetdb.msi /norestart TARGETDIR=$Env:RUNNER_TEMP\Monet
           dir $Env:RUNNER_TEMP
+          echo hello
           dir $Env:RUNNER_TEMP\Monet
+          echo world
 
       # - name: run the test
       #   run: |
